@@ -1,0 +1,114 @@
+config-version = 2
+start-at-login = false
+
+# --- Window & Layout Options ---
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+accordion-padding = 30
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+automatically-unhide-macos-hidden-apps = false
+
+# --- Workspaces & Gaps ---
+persistent-workspaces = ["1","2","3","4","5","6","7","8","9","M"]
+[key-mapping]
+preset = 'qwerty'
+
+[gaps]
+inner.horizontal = 10
+inner.vertical = 10
+outer.left = 10
+outer.bottom = 10
+outer.top = 10
+outer.right = 10
+
+# --- Monitor Assignment ---
+[workspace-to-monitor-force-assignment]
+1 = 'DELL S3422DWG'
+2 = 'DELL S3422DWG'
+3 = 'DELL S3422DWG'
+4 = 'DELL S3422DWG'
+5 = 'DELL S3422DWG'
+6 = 'DELL S3422DWG'
+7 = 'DELL S3422DWG'
+8 = 'DELL S3422DWG'
+9 = 'DELL S3422DWG'
+M = 'Built-in Display'
+
+# --- MAIN MODE BINDS ---
+[mode.main.binding]
+# Layouts & Fullscreen
+alt-slash = 'layout tiles horizontal vertical'
+alt-comma = 'layout accordion horizontal vertical'
+alt-f = 'fullscreen'
+
+# Window Focus (HJKL)
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
+
+# Move Windows (Shift + HJKL)
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+
+# Resize
+alt-minus = 'resize smart -50'
+alt-equal = 'resize smart +50'
+
+# Switch Workspaces
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+alt-6 = 'workspace 6'
+alt-7 = 'workspace 7'
+alt-8 = 'workspace 8'
+alt-9 = 'workspace 9'
+alt-m = 'workspace M'
+
+# Move Window to Workspace
+alt-shift-1 = 'move-node-to-workspace 1'
+alt-shift-2 = 'move-node-to-workspace 2'
+alt-shift-3 = 'move-node-to-workspace 3'
+alt-shift-4 = 'move-node-to-workspace 4'
+alt-shift-5 = 'move-node-to-workspace 5'
+alt-shift-6 = 'move-node-to-workspace 6'
+alt-shift-7 = 'move-node-to-workspace 7'
+alt-shift-8 = 'move-node-to-workspace 8'
+alt-shift-9 = 'move-node-to-workspace 9'
+
+# Multi-monitor & Workspace Management
+alt-tab = 'workspace-back-and-forth'
+alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+alt-shift-b = 'move-workspace-to-monitor "Built-in Display"'
+alt-shift-semicolon = 'mode service'
+
+alt-shift-m = [
+  'move-node-to-workspace M',
+  'workspace M',
+  'move-workspace-to-monitor "Built-in Display"'
+]
+
+alt-shift-d = [
+  'move-node-to-workspace 1',
+  'workspace 1',
+  'move-workspace-to-monitor "DELL S3422DWG"'
+]
+
+# --- SERVICE MODE BINDS ---
+[mode.service.binding]
+esc = ['reload-config', 'mode main']
+r = ['flatten-workspace-tree', 'mode main']
+f = ['layout floating tiling', 'mode main']
+backspace = ['close-all-windows-but-current', 'mode main']
+
+# Container Joining
+alt-shift-h = ['join-with left', 'mode main']
+alt-shift-j = ['join-with down', 'mode main']
+alt-shift-k = ['join-with up', 'mode main']
+alt-shift-l = ['join-with right', 'mode main']
