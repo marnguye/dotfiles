@@ -25,6 +25,7 @@ return {
       json = { "prettier" },
       yaml = { "prettier" },
       markdown = { "prettier" },
+      go = { "goimports", "gofumpt" },
     },
     -- Enable format-on-save automatically
     format_on_save = {
