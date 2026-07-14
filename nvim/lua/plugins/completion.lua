@@ -9,14 +9,12 @@ return {
     local cmp = require("cmp")
     local luasnip = require("luasnip")
 
-    -- Load vscode-style snippets (friendly-snippets includes Go)
     require("luasnip.loaders.from_vscode").lazy_load()
 
-    -- Insert luasnip source to autocomplete
     table.insert(opts.sources, { name = "luasnip" })
 
     opts.mapping = cmp.mapping.preset.insert({
-      ["<CR>"] = cmp.mapping.confirm({ select = true }),
+      ["<CR>"] = cmp.mapping.confirm({ select = false }),
       ["<Tab>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
           cmp.select_next_item()
