@@ -1,24 +1,26 @@
 return {
-  "catppuccin/nvim",
-  name = "catppuccin",
+  "folke/tokyonight.nvim",
+  lazy = false,
   priority = 1000,
-  config = function()
-    require("catppuccin").setup({
-      background = {
-        light = "latte", -- Use Latte flavour for light mode
-        dark = "mocha", -- Use Mocha flavour for dark mode
-      },
-      transparent_background = false,
-      term_colors = true,
-      integrations = {
-        cmp = true,
-        gitsigns = true,
-        nvimtree = true,
-        treesitter = true,
-      },
-    })
-
-    -- Load the colorscheme
-    vim.cmd.colorscheme("catppuccin")
+  opts = {
+    style = "storm",
+    transparent = false,
+    terminal_colors = true,
+    styles = {
+      comments = { italic = true },
+      keywords = { italic = true },
+      sidebars = "dark",
+      floats = "dark",
+    },
+    on_highlights = function(hl, c)
+      hl.DiffAdd = { bg = c.diff.add }
+      hl.DiffDelete = { bg = c.diff.delete }
+      hl.DiffChange = { bg = c.diff.change }
+      hl.DiffText = { bg = c.diff.text }
+    end,
+  },
+  config = function(_, opts)
+    require("tokyonight").setup(opts)
+    vim.cmd.colorscheme("tokyonight")
   end,
 }

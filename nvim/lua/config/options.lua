@@ -31,3 +31,38 @@ opt.signcolumn = "yes" -- Always show the sign column (prevents UI flashing)
 
 -- Text wrapping
 opt.wrap = false -- Disable line wrapping by default
+
+-- UI
+vim.opt.laststatus = 3
+vim.opt.showmode = false
+vim.opt.showcmd = false
+vim.opt.cmdheight = 0
+
+-- Splits
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+
+-- Scrolling
+vim.opt.sidescrolloff = 8
+
+-- Whitespace
+vim.opt.list = true
+vim.opt.listchars = {
+  tab = "→ ",
+  trail = "·",
+  extends = "›",
+  precedes = "‹",
+}
+
+-- Picker
+vim.g.lazyvim_picker = "snacks"
+
+-- Better completion UI
+vim.opt.pumheight = 12
+
+-- Don't show completion preview window
+vim.opt.completeopt = {
+  "menu",
+  "menuone",
+  "noselect",
+}

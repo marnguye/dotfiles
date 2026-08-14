@@ -1,29 +1,66 @@
 return {
-  -- Disable mini.files completely so it stop showing up as "Explorer"
-  {
-    "echasnovski/mini.files",
-    enabled = false,
-  },
-
-  -- Configure Neo-tree as the exclusive file manager
   {
     "nvim-neo-tree/neo-tree.nvim",
-    keys = {
-      -- Map leader + e to open Neo-tree
-      { "<leader>e", "<cmd>Neotree toggle left<cr>", desc = "Toggle Neo-tree" },
-    },
+
     opts = {
+      close_if_last_window = true,
+
       filesystem = {
-        -- Take over netrw completely
-        hijack_netrw = true,
+        hijack_netrw_behavior = "open_default",
+
+        follow_current_file = {
+          enabled = true,
+          leave_dirs_open = false,
+        },
+
         filtered_items = {
           visible = true,
           hide_dotfiles = false,
           hide_gitignored = false,
+          hide_hidden = false,
         },
       },
+
       window = {
         width = 30,
+
+        mappings = {
+          ["<space>"] = "none",
+          ["l"] = "open",
+          ["h"] = "close_node",
+        },
+      },
+
+      default_component_configs = {
+        indent = {
+          with_expanders = true,
+          expander_collapsed = "",
+          expander_expanded = "",
+        },
+
+        icon = {
+          folder_closed = "",
+          folder_open = "",
+          folder_empty = "",
+        },
+
+        modified = {
+          symbol = "●",
+        },
+
+        git_status = {
+          symbols = {
+            added = "A",
+            modified = "M",
+            deleted = "D",
+            renamed = "R",
+            untracked = "U",
+            ignored = "I",
+            unstaged = "M",
+            staged = "S",
+            conflict = "!",
+          },
+        },
       },
     },
   },
