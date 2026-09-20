@@ -1,13 +1,8 @@
 config-version = 2
 
 start-at-login = false
-auto-reload-config = true
 
-
-# ============================================================
 # Window / Layout
-# ============================================================
-
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
@@ -16,47 +11,25 @@ accordion-padding = 30
 default-root-container-layout = 'tiles'
 default-root-container-orientation = 'auto'
 
-
-# Move cursor to the center when changing monitor
-on-focused-monitor-changed = [
-  'move-mouse monitor-lazy-center'
-]
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 automatically-unhide-macos-hidden-apps = false
 
-
-# ============================================================
-# Workspaces
-# ============================================================
-
-
+# Workspaces — must be before [gaps]
 persistent-workspaces = [
-  "1",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-
-  "A",
-  "B",
-  "C",
-  "D",
-  "E",
-  "F",
+  "1", "2", "3", "4", "5", "6", "7", "8", "9",
+  "A", "B", "C", "D", "E", "F",
 ]
 
-
-# ============================================================
-# Dynamic Monitor Assignment
-# ============================================================
-
+[gaps]
+inner.horizontal = 12
+inner.vertical   = 12
+outer.left       = 12
+outer.bottom     = 12
+outer.top        = 12
+outer.right      = 12
 
 [workspace-to-monitor-force-assignment]
-
 1 = 'main'
 2 = 'main'
 3 = 'main'
@@ -66,7 +39,6 @@ persistent-workspaces = [
 7 = 'main'
 8 = 'main'
 9 = 'main'
-
 A = 'secondary'
 B = 'secondary'
 C = 'secondary'
@@ -74,97 +46,35 @@ D = 'secondary'
 E = 'secondary'
 F = 'secondary'
 
-
-# ============================================================
-# Key Mapping
-# ============================================================
-
 [key-mapping]
 preset = 'qwerty'
 
-
-# ============================================================
-# Gaps
-# ============================================================
-
-[gaps]
-
-inner.horizontal = 10
-inner.vertical = 10
-
-outer.left = 10
-outer.bottom = 10
-outer.top = 10
-outer.right = 10
-
-
-# ============================================================
-# MAIN MODE
-# ============================================================
-
 [mode.main.binding]
 
-
-# ------------------------------------------------------------
 # Layout
-# ------------------------------------------------------------
-
-# Toggle tiles orientation
-alt-slash = 'layout tiles horizontal vertical'
-
-# Toggle accordion
-alt-comma = 'layout accordion horizontal vertical'
-
-# Fullscreen
-alt-f = 'fullscreen'
-
-# Toggle floating / tiling
+alt-slash   = 'layout tiles horizontal vertical'
+alt-comma   = 'layout accordion horizontal vertical'
+alt-f       = 'fullscreen'
 alt-shift-f = 'layout floating tiling'
 
-
-# ------------------------------------------------------------
-# Window Focus
-# ------------------------------------------------------------
-
-# Vim-style navigation
-
+# Focus
 alt-h = 'focus left'
 alt-j = 'focus down'
 alt-k = 'focus up'
 alt-l = 'focus right'
 
-
-# ------------------------------------------------------------
-# Move Windows
-# ------------------------------------------------------------
-
+# Move
 alt-shift-h = 'move left'
 alt-shift-j = 'move down'
 alt-shift-k = 'move up'
 alt-shift-l = 'move right'
 
-
-# ------------------------------------------------------------
 # Resize
-# ------------------------------------------------------------
-
 alt-minus = 'resize smart -50'
 alt-equal = 'resize smart +50'
+alt-0     = 'balance-sizes'
 
-# Reset to equal size
-alt-0 = 'balance-sizes'
-
-
-# ============================================================
-# MAIN DISPLAY WORKSPACES
-# ============================================================
-#
-# 1-9 always belong to the macOS Main Display.
-#
-# This is dynamic — it doesn't matter which physical monitor
-# macOS considers the Main Display.
-# ============================================================
-
+# Main display
 alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
@@ -175,214 +85,54 @@ alt-7 = 'workspace 7'
 alt-8 = 'workspace 8'
 alt-9 = 'workspace 9'
 
-
-# ============================================================
-# SECONDARY DISPLAY WORKSPACES
-# ============================================================
-#
-# A-F always belong to the secondary monitor.
-#
-# Usually this will be your MacBook display.
-# ============================================================
-
+# Secondary display
 alt-a = 'workspace A'
 alt-b = 'workspace B'
 alt-c = 'workspace C'
 alt-d = 'workspace D'
 alt-e = 'workspace E'
 
+# Move to main
+alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
+alt-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
+alt-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
+alt-shift-4 = ['move-node-to-workspace 4', 'workspace 4']
+alt-shift-5 = ['move-node-to-workspace 5', 'workspace 5']
+alt-shift-6 = ['move-node-to-workspace 6', 'workspace 6']
+alt-shift-7 = ['move-node-to-workspace 7', 'workspace 7']
+alt-shift-8 = ['move-node-to-workspace 8', 'workspace 8']
+alt-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
 
-# ============================================================
-# MOVE WINDOW → MAIN DISPLAY
-# ============================================================
-#
-# ALT + SHIFT + number
-#
-# Move the currently focused window to a workspace on the
-# Main Display and switch there.
-# ============================================================
+# Move to secondary
+alt-shift-a = ['move-node-to-workspace A', 'workspace A']
+alt-shift-b = ['move-node-to-workspace B', 'workspace B']
+alt-shift-c = ['move-node-to-workspace C', 'workspace C']
+alt-shift-d = ['move-node-to-workspace D', 'workspace D']
+alt-shift-e = ['move-node-to-workspace E', 'workspace E']
 
-alt-shift-1 = [
-  'move-node-to-workspace 1',
-  'workspace 1'
-]
-
-alt-shift-2 = [
-  'move-node-to-workspace 2',
-  'workspace 2'
-]
-
-alt-shift-3 = [
-  'move-node-to-workspace 3',
-  'workspace 3'
-]
-
-alt-shift-4 = [
-  'move-node-to-workspace 4',
-  'workspace 4'
-]
-
-alt-shift-5 = [
-  'move-node-to-workspace 5',
-  'workspace 5'
-]
-
-alt-shift-6 = [
-  'move-node-to-workspace 6',
-  'workspace 6'
-]
-
-alt-shift-7 = [
-  'move-node-to-workspace 7',
-  'workspace 7'
-]
-
-alt-shift-8 = [
-  'move-node-to-workspace 8',
-  'workspace 8'
-]
-
-alt-shift-9 = [
-  'move-node-to-workspace 9',
-  'workspace 9'
-]
-
-
-# ============================================================
-# MOVE WINDOW → SECONDARY DISPLAY
-# ============================================================
-
-
-alt-shift-a = [
-  'move-node-to-workspace A',
-  'workspace A'
-]
-
-alt-shift-b = [
-  'move-node-to-workspace B',
-  'workspace B'
-]
-
-alt-shift-c = [
-  'move-node-to-workspace C',
-  'workspace C'
-]
-
-alt-shift-d = [
-  'move-node-to-workspace D',
-  'workspace D'
-]
-
-alt-shift-e = [
-  'move-node-to-workspace E',
-  'workspace E'
-]
-
-# ============================================================
-# WORKSPACE HISTORY
-# ============================================================
-
-# Jump back to previous workspace
-
+# Workspace history
 alt-tab = 'workspace-back-and-forth'
 
+# Monitor management
+alt-shift-left  = ['move-workspace-to-monitor --wrap-around prev', 'focus-monitor prev', 'move-mouse monitor-lazy-center']
+alt-shift-right = ['move-workspace-to-monitor --wrap-around next', 'focus-monitor next', 'move-mouse monitor-lazy-center']
+alt-shift-up    = ['move-node-to-monitor prev', 'focus-monitor prev', 'move-mouse monitor-lazy-center']
+alt-shift-down  = ['move-node-to-monitor next', 'focus-monitor next', 'move-mouse monitor-lazy-center']
 
-# ============================================================
-# MONITOR MANAGEMENT
-# ============================================================
+# Floating resize
+alt-ctrl-minus = 'resize smart -30'
+alt-ctrl-equal = 'resize smart +30'
 
-# Move current workspace to previous monitor
-alt-shift-left = [
-  'move-workspace-to-monitor --wrap-around prev',
-  'focus-monitor prev',
-  'move-mouse monitor-lazy-center'
-]
-
-# Move current workspace to next monitor
-alt-shift-right = [
-  'move-workspace-to-monitor --wrap-around next',
-  'focus-monitor next',
-  'move-mouse monitor-lazy-center'
-]
-
-
-# Move current window to previous monitor
-alt-shift-up = [
-  'move-node-to-monitor prev',
-  'focus-monitor prev',
-  'move-mouse monitor-lazy-center'
-]
-
-# Move current window to next monitor
-alt-shift-down = [
-  'move-node-to-monitor next',
-  'focus-monitor next',
-  'move-mouse monitor-lazy-center'
-]
-
-
-# ============================================================
-# SERVICE MODE
-# ============================================================
-
+# Service mode
 alt-shift-semicolon = 'mode service'
 
-
-# ============================================================
-# SERVICE MODE
-# ============================================================
-
 [mode.service.binding]
+esc       = ['reload-config', 'mode main']
+r         = ['flatten-workspace-tree', 'mode main']
+f         = ['layout floating tiling', 'mode main']
+backspace = ['close-all-windows-but-current', 'mode main']
 
-
-# Exit service mode
-esc = [
-  'reload-config',
-  'mode main'
-]
-
-
-# Reset layout
-r = [
-  'flatten-workspace-tree',
-  'mode main'
-]
-
-
-# Toggle floating / tiling
-f = [
-  'layout floating tiling',
-  'mode main'
-]
-
-
-# Close everything except current window
-backspace = [
-  'close-all-windows-but-current',
-  'mode main'
-]
-
-
-# ------------------------------------------------------------
-# Join Containers
-# ------------------------------------------------------------
-
-alt-shift-h = [
-  'join-with left',
-  'mode main'
-]
-
-alt-shift-j = [
-  'join-with down',
-  'mode main'
-]
-
-alt-shift-k = [
-  'join-with up',
-  'mode main'
-]
-
-alt-shift-l = [
-  'join-with right',
-  'mode main'
-]
+alt-shift-h = ['join-with left',  'mode main']
+alt-shift-j = ['join-with down',  'mode main']
+alt-shift-k = ['join-with up',    'mode main']
+alt-shift-l = ['join-with right', 'mode main']
