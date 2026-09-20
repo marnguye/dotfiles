@@ -1,53 +1,54 @@
--- Global Neovim options
+-- Disable netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 local opt = vim.opt
 
 -- Line numbers
-opt.number = true -- Show line numbers
-opt.relativenumber = true -- Relative line numbers for easy jumping
+opt.number = true
+opt.relativenumber = true
 
 -- Tabs & Indentation
-opt.tabstop = 2 -- Number of spaces that a <Tab> counts for
-opt.shiftwidth = 2 -- Number of spaces to use for each step of indent
-opt.expandtab = true -- Convert tabs to spaces
-opt.smartindent = true -- Make indenting smart
+opt.tabstop = 2
+opt.shiftwidth = 2
+opt.expandtab = true
+opt.smartindent = true
 
--- Search behavior
-opt.ignorecase = true -- Ignore case when searching
-opt.smartcase = true -- Don't ignore case if search has caps
+-- Search
+opt.ignorecase = true
+opt.smartcase = true
 
--- Backups and Undo
-opt.swapfile = false -- Disable swap files
-opt.backup = false -- Disable backups
-opt.undofile = true -- Save undo history to a file
-
--- UI styling
-opt.termguicolors = true -- True color support
-opt.cursorline = true -- Highlight the current line
-opt.scrolloff = 8 -- Keep at least 8 lines above/below cursor
-opt.signcolumn = "yes" -- Always show the sign column (prevents UI flashing)
-
--- Text wrapping
-opt.wrap = false -- Disable line wrapping by default
+-- Files
+opt.swapfile = false
+opt.backup = false
+opt.undofile = true
 
 -- UI
-vim.opt.laststatus = 3
-vim.opt.showmode = false
-vim.opt.showcmd = false
-vim.opt.cmdheight = 0
+opt.termguicolors = true
+opt.cursorline = true
+opt.scrolloff = 8
+opt.signcolumn = "yes"
+opt.wrap = false
+opt.laststatus = 3
+opt.showmode = false
+opt.showcmd = false
+opt.cmdheight = 0
+opt.pumheight = 12
+opt.sidescrolloff = 8
 
 -- Splits
-vim.opt.splitbelow = true
-vim.opt.splitright = true
+opt.splitbelow = true
+opt.splitright = true
 
--- Scrolling
-vim.opt.sidescrolloff = 8
+-- Completion
+opt.completeopt = { "menu", "menuone", "noselect" }
 
 -- Whitespace
-vim.opt.list = true
-vim.opt.listchars = {
+opt.list = true
+opt.listchars = {
   tab = "→ ",
   trail = "·",
   extends = "›",
@@ -56,13 +57,3 @@ vim.opt.listchars = {
 
 -- Picker
 vim.g.lazyvim_picker = "snacks"
-
--- Better completion UI
-vim.opt.pumheight = 12
-
--- Don't show completion preview window
-vim.opt.completeopt = {
-  "menu",
-  "menuone",
-  "noselect",
-}
