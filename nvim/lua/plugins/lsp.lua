@@ -1,5 +1,9 @@
 return {
   "neovim/nvim-lspconfig",
+  dependencies = {
+    "mason-org/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+  },
   opts = {
     servers = {
       gopls = {
@@ -21,6 +25,84 @@ return {
               rangeVariableTypes = true,
             },
           },
+        },
+      },
+
+      ts_ls = {
+        settings = {
+          typescript = {
+            inlayHints = {
+              includeInlayParameterNameHints = "all",
+              includeInlayVariableTypeHints = true,
+              includeInlayFunctionLikeReturnTypeHints = true,
+              includeInlayPropertyDeclarationTypeHints = true,
+            },
+          },
+          javascript = {
+            inlayHints = {
+              includeInlayParameterNameHints = "all",
+              includeInlayVariableTypeHints = true,
+              includeInlayFunctionLikeReturnTypeHints = true,
+            },
+          },
+        },
+        filetypes = {
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact",
+        },
+      },
+
+      eslint = {
+        settings = {
+          workingDirectories = { mode = "auto" },
+        },
+        on_attach = function(_, bufnr)
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = bufnr,
+            command = "EslintFixAll",
+          })
+        end,
+      },
+
+      html = {},
+      cssls = {},
+
+      jsonls = {
+        settings = {
+          json = {
+            validate = { enable = true },
+          },
+        },
+      },
+
+      tailwindcss = {
+        filetypes = {
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact",
+        },
+        settings = {
+          tailwindCSS = {
+            experimental = {
+              classRegex = {
+                -- NativeWind
+                { "className\\s*=\\s*[\"'`]([^\"'`]*)[\"'`]" },
+                { "tw\\`([^`]*)\\`" },
+                { "tw\\.\\w+\\`([^`]*)\\`" },
+              },
+            },
+          },
+        },
+      },
+
+      emmet_ls = {
+        filetypes = {
+          "html",
+          "javascriptreact",
+          "typescriptreact",
         },
       },
     },
