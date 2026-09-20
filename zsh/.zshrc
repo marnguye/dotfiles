@@ -1,0 +1,1 @@
+/Users/nmrtn/github/dotfiles-latest/zshrc/zshrc-file.sh

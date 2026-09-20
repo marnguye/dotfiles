@@ -1,0 +1,146 @@
+"$schema" = "https://starship.rs/config-schema.json"
+
+format = """
+$os\
+$directory\
+$git_branch\
+$git_status\
+$fill\
+$nodejs\
+$golang\
+$python\
+$rust\
+$docker_context\
+$cmd_duration\
+$line_break\
+$character"""
+
+add_newline = true
+palette = "tokyonight"
+
+# Separator line before each prompt — makes it easy to see where new cmd starts
+[line_break]
+disabled = false
+
+[os]
+disabled = false
+format = "[$symbol]($style) "
+style = "fg:blue"
+
+[os.symbols]
+Macos = ""
+
+[directory]
+style = "bold fg:blue"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+truncate_to_repo = true
+
+[directory.substitutions]
+"Documents" = "󰈙"
+"Downloads" = " "
+"Desktop"   = " "
+"~"         = " ~"
+
+[git_branch]
+style  = "fg:green"
+symbol = " "
+format = "[$symbol$branch ]($style)"
+
+[git_status]
+style  = "fg:red"
+format = "([$all_status$ahead_behind]($style) )"
+conflicted  = "⚡"
+ahead       = "⇡${count}"
+behind      = "⇣${count}"
+diverged    = "⇕⇡${ahead_count}⇣${behind_count}"
+untracked   = "?${count}"
+stashed     = " "
+modified    = "!${count}"
+staged      = "+${count}"
+deleted     = "✘${count}"
+
+[fill]
+symbol = " "
+
+[nodejs]
+style  = "fg:teal"
+symbol = " "
+format = "[$symbol$version ]($style)"
+detect_files = ["package.json", ".nvmrc"]
+
+[golang]
+style  = "fg:blue"
+symbol = " "
+format = "[$symbol$version ]($style)"
+detect_files = ["go.mod"]
+
+[python]
+style  = "fg:yellow"
+symbol = " "
+format = "[$symbol$version ]($style)"
+
+[rust]
+style  = "fg:orange"
+symbol = " "
+format = "[$symbol$version ]($style)"
+
+[docker_context]
+style  = "fg:teal"
+symbol = " "
+format = "[$symbol$context ]($style)"
+only_with_files = true
+
+[cmd_duration]
+min_time = 500
+style    = "fg:gray"
+format   = "[ 󱦟 $duration ]($style)"
+
+# Prompt character — green OK, red on error, purple in vim mode
+[character]
+success_symbol = "[❯](bold fg:green)"
+error_symbol   = "[❯](bold fg:red)"
+vimcmd_symbol  = "[❮](bold fg:purple)"
+
+# Disabled
+[username]
+disabled = true
+
+[hostname]
+disabled = true
+
+[time]
+disabled = true
+
+[package]
+disabled = true
+
+[aws]
+disabled = true
+
+[lua]
+disabled = true
+
+[haskell]
+disabled = true
+
+[ruby]
+disabled = true
+
+[jobs]
+disabled = true
+
+# Tokyo Night palette
+[palettes.tokyonight]
+dark_blue = "#3d59a1"
+blue      = "#7aa2f7"
+teal      = "#73daca"
+red       = "#f7768e"
+orange    = "#ff9e64"
+green     = "#9ece6a"
+yellow    = "#e0af68"
+purple    = "#bb9af7"
+gray      = "#565f89"
+white     = "#c0caf5"
+black     = "#16161e"
