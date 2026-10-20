@@ -54,72 +54,62 @@ return {
 ⠀⠀⠀⣀⣠⣬⣭⣿⣯⡍⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 
           ]],
+
           keys = {
             {
-              icon = " ",
+              icon = " ",
               key = "f",
-              desc = "Find File",
-              action = ":lua Snacks.picker.files()",
+              desc = "Find files",
+              action = function()
+                Snacks.picker.files()
+              end,
             },
             {
-              icon = " ",
+              icon = " ",
               key = "g",
-              desc = "Live Grep",
-              action = ":lua Snacks.picker.grep()",
+              desc = "Search in project",
+              action = function()
+                Snacks.picker.grep()
+              end,
+            },
+            { icon = " ", key = "n", desc = "New file", action = ":ene | startinsert" },
+            {
+              icon = " ",
+              key = "r",
+              desc = "Recent files",
+              action = function()
+                Snacks.picker.recent()
+              end,
             },
             {
-              icon = "󰉖 ",
+              icon = " ",
               key = "p",
               desc = "Projects",
-              action = ":lua Snacks.picker.projects()",
+              action = function()
+                Snacks.picker.projects()
+              end,
             },
             {
-              icon = " ",
-              key = "r",
-              desc = "Recent Files",
-              action = ":lua Snacks.picker.recent()",
-            },
-            {
-              icon = " ",
-              key = "n",
-              desc = "New File",
-              action = ":enew",
-            },
-            {
-              icon = " ",
+              icon = " ",
               key = "s",
-              desc = "Restore Session",
-              action = ":lua require('persistence').load()",
+              desc = "Restore session",
+              action = function()
+                require("persistence").load()
+              end,
             },
-            {
-              icon = "󰒲 ",
-              key = "l",
-              desc = "Lazy",
-              action = ":Lazy",
-            },
-            {
-              icon = " ",
-              key = "q",
-              desc = "Quit",
-              action = ":qa",
-            },
+            { icon = "󰒲 ", key = "l", desc = "Plugin manager", action = ":Lazy" },
+            { icon = " ", key = "q", desc = "Quit", action = ":qa" },
           },
         },
-
         sections = {
-          {
-            section = "header",
-            padding = 1,
-          },
-          {
-            section = "keys",
-            gap = 1,
-            padding = 1,
-          },
-          {
-            section = "startup",
-            padding = 1,
-          },
+          { section = "header", padding = 1 },
+          { title = "QUICK ACTIONS", padding = { 0, 1 } },
+          { section = "keys", gap = 0, padding = 1 },
+          { title = "RECENT FILES", padding = { 0, 1 } },
+          { section = "recent_files", limit = 4, indent = 2, padding = 1 },
+          { title = "PROJECTS", padding = { 0, 1 } },
+          { section = "projects", limit = 3, indent = 2, padding = 1 },
+          { section = "startup", padding = 1 },
         },
       },
     },

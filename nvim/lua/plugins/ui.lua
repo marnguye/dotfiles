@@ -15,219 +15,113 @@ return {
         sidebars = "dark",
         floats = "dark",
       },
-
       on_highlights = function(hl, c)
-        -- ============================================================
-        -- Base
-        -- ============================================================
+        local bg = c.bg
+        local surface = "#1f2335"
+        local elevated = "#24283b"
+        local border = "#414868"
+        local muted = "#565f89"
+        local blue = "#7aa2f7"
+        local selection = "#283457"
 
-        hl.Normal = { fg = c.fg, bg = c.bg }
-        hl.NormalNC = { fg = c.fg, bg = c.bg }
-        hl.EndOfBuffer = { fg = c.bg }
-        hl.SignColumn = { bg = c.bg }
-
-        -- ============================================================
-        -- Cursor / Lines
-        -- ============================================================
+        hl.Normal = { fg = c.fg, bg = bg }
+        hl.NormalNC = { fg = c.fg, bg = bg }
+        hl.EndOfBuffer = { fg = bg }
+        hl.SignColumn = { bg = bg }
+        hl.FoldColumn = { fg = muted, bg = bg }
 
         hl.CursorLine = { bg = "#1e2030" }
         hl.CursorColumn = { bg = "#1e2030" }
+        hl.LineNr = { fg = muted }
+        hl.LineNrAbove = { fg = muted }
+        hl.LineNrBelow = { fg = muted }
+        hl.CursorLineNr = { fg = blue, bold = true }
 
-        -- More visible line numbers
-        hl.LineNr = {
-          fg = "#545c7e", -- was #3b4261, now much more readable
-        }
+        hl.WinSeparator = { fg = "#292e42", bg = bg }
+        hl.VertSplit = { fg = "#292e42", bg = bg }
+        hl.NormalFloat = { fg = c.fg, bg = surface }
+        hl.FloatBorder = { fg = border, bg = surface }
+        hl.FloatTitle = { fg = blue, bg = surface, bold = true }
 
-        -- Active line number — bright blue, bold
-        hl.CursorLineNr = {
-          fg = "#545c7e",
-          bold = true,
-        }
+        hl.Pmenu = { fg = c.fg, bg = surface }
+        hl.PmenuSel = { fg = c.fg, bg = selection, bold = true }
+        hl.PmenuSbar = { bg = surface }
+        hl.PmenuThumb = { bg = border }
 
-        -- Relative line numbers slightly dimmer than active but still visible
-        hl.LineNrAbove = { fg = "#7aa2f7" }
-        hl.LineNrBelow = { fg = "#bb9af7" }
+        hl.Visual = { bg = selection }
+        hl.VisualNOS = { bg = selection }
+        hl.Search = { fg = bg, bg = c.yellow, bold = true }
+        hl.IncSearch = { fg = bg, bg = c.cyan, bold = true }
+        hl.CurSearch = { fg = bg, bg = blue, bold = true }
+        hl.Substitute = { fg = bg, bg = c.magenta }
 
-        hl.FoldColumn = { fg = "#545c7e", bg = c.bg }
+        hl.DiagnosticError = { fg = c.red }
+        hl.DiagnosticWarn = { fg = c.yellow }
+        hl.DiagnosticInfo = { fg = c.cyan }
+        hl.DiagnosticHint = { fg = c.teal }
 
-        -- ============================================================
-        -- Windows / Borders
-        -- ============================================================
+        hl.DiagnosticUnderlineError = { undercurl = true, sp = c.red }
+        hl.DiagnosticUnderlineWarn = { undercurl = true, sp = c.yellow }
+        hl.DiagnosticUnderlineInfo = { undercurl = true, sp = c.cyan }
+        hl.DiagnosticUnderlineHint = { undercurl = true, sp = c.teal }
 
-        hl.WinSeparator = { fg = "#3b4261", bg = c.bg }
-        hl.VertSplit = { fg = "#3b4261", bg = c.bg }
+        hl.DiffAdd = { bg = "#1a2d29" }
+        hl.DiffChange = { bg = "#1b2838" }
+        hl.DiffDelete = { bg = "#30232b" }
+        hl.DiffText = { bg = selection, bold = true }
 
-        hl.FloatBorder = { fg = "#3d59a1", bg = "#1a1b26" }
-        hl.FloatTitle = { fg = "#7aa2f7", bg = "#1a1b26", bold = true }
-        hl.NormalFloat = { fg = c.fg, bg = "#1a1b26" }
+        hl.GitSignsAdd = { fg = c.green }
+        hl.GitSignsChange = { fg = blue }
+        hl.GitSignsDelete = { fg = c.red }
 
-        -- ============================================================
-        -- Popup menu / Completion
-        -- ============================================================
+        hl.Folded = { fg = muted, bg = surface, italic = true }
+        hl.IblIndent = { fg = "#292e42" }
+        hl.IblScope = { fg = border }
 
-        hl.Pmenu = { fg = c.fg, bg = "#16161e" }
-        hl.PmenuSel = { fg = "#c0caf5", bg = "#283457", bold = true }
-        hl.PmenuSbar = { bg = "#1a1b26" }
-        hl.PmenuThumb = { bg = "#3b4261" }
+        hl.StatusLine = { fg = c.fg, bg = surface }
+        hl.StatusLineNC = { fg = muted, bg = bg }
+        hl.TabLine = { fg = muted, bg = bg }
+        hl.TabLineFill = { bg = bg }
+        hl.TabLineSel = { fg = c.fg, bg = elevated, bold = true }
 
-        -- ============================================================
-        -- Search / Selection
-        -- ============================================================
+        hl.SnacksPickerNormal = { fg = c.fg, bg = surface }
+        hl.SnacksPickerBorder = { fg = border, bg = surface }
+        hl.SnacksPickerInput = { fg = c.fg, bg = surface }
+        hl.SnacksPickerInputBorder = { fg = border, bg = surface }
+        hl.SnacksPickerInputTitle = { fg = blue, bg = surface, bold = true }
+        hl.SnacksPickerPreview = { fg = c.fg, bg = surface }
+        hl.SnacksPickerPreviewBorder = { fg = border, bg = surface }
+        hl.SnacksPickerList = { fg = c.fg, bg = surface }
+        hl.SnacksPickerListCursorLine = { fg = c.fg, bg = selection, bold = true }
 
-        hl.Visual = { bg = "#2d3f76" }
-        hl.VisualNOS = { bg = "#2d3f76" }
+        hl.TroubleNormal = { fg = c.fg, bg = surface }
+        hl.TroubleText = { fg = c.fg }
+        hl.TroubleCount = { fg = c.magenta, bold = true }
+        hl.TroubleIndent = { fg = border }
 
-        hl.Search = { fg = "#16161e", bg = "#e0af68", bold = true }
-        hl.IncSearch = { fg = "#16161e", bg = "#7dcfff", bold = true }
-        hl.CurSearch = { fg = "#16161e", bg = "#7aa2f7", bold = true }
-        hl.Substitute = { fg = "#16161e", bg = "#bb9af7" }
+        hl.NoiceCmdline = { fg = c.fg, bg = surface }
+        hl.NoiceCmdlinePopup = { fg = c.fg, bg = surface }
+        hl.NoiceCmdlinePopupBorder = { fg = border, bg = surface }
+        hl.NoiceCmdlineIcon = { fg = blue }
+        hl.NoicePopup = { fg = c.fg, bg = surface }
+        hl.NoicePopupmenu = { fg = c.fg, bg = surface }
 
-        -- ============================================================
-        -- Diagnostics
-        -- ============================================================
+        hl.DropBarIconKindFile = { fg = blue }
+        hl.DropBarKindFile = { fg = c.fg }
+        hl.DropBarKindFolder = { fg = c.cyan }
+        hl.DropBarKindFunction = { fg = c.magenta }
+        hl.DropBarKindMethod = { fg = c.magenta }
 
-        hl.DiagnosticError = { fg = "#f7768e" }
-        hl.DiagnosticWarn = { fg = "#e0af68" }
-        hl.DiagnosticInfo = { fg = "#7dcfff" }
-        hl.DiagnosticHint = { fg = "#73daca" }
+        hl.WhichKey = { fg = blue }
+        hl.WhichKeyGroup = { fg = c.cyan }
+        hl.WhichKeyDesc = { fg = c.fg }
+        hl.WhichKeySeparator = { fg = muted }
 
-        hl.DiagnosticUnderlineError = { undercurl = true, sp = "#f7768e" }
-        hl.DiagnosticUnderlineWarn = { undercurl = true, sp = "#e0af68" }
-        hl.DiagnosticUnderlineInfo = { undercurl = true, sp = "#7dcfff" }
-        hl.DiagnosticUnderlineHint = { undercurl = true, sp = "#73daca" }
-
-        -- Diagnostic virtual text — slightly dimmer
-        hl.DiagnosticVirtualTextError = { fg = "#f7768e", bg = "#2d1e28", italic = true }
-        hl.DiagnosticVirtualTextWarn = { fg = "#e0af68", bg = "#2d2718", italic = true }
-        hl.DiagnosticVirtualTextInfo = { fg = "#7dcfff", bg = "#1a2535", italic = true }
-        hl.DiagnosticVirtualTextHint = { fg = "#73daca", bg = "#1a2d2d", italic = true }
-
-        -- ============================================================
-        -- Git / Diff
-        -- ============================================================
-
-        hl.DiffAdd = { fg = "#73daca", bg = "#16252a" }
-        hl.DiffChange = { fg = "#7dcfff", bg = "#172332" }
-        hl.DiffDelete = { fg = "#f7768e", bg = "#2a1b22" }
-        hl.DiffText = { fg = "#c0caf5", bg = "#283457" }
-
-        hl.GitSignsAdd = { fg = "#73daca" }
-        hl.GitSignsChange = { fg = "#7dcfff" }
-        hl.GitSignsDelete = { fg = "#f7768e" }
-
-        -- ============================================================
-        -- Folds
-        -- ============================================================
-
-        hl.Folded = { fg = "#565f89", bg = "#1a1b26", italic = true }
-
-        -- ============================================================
-        -- Indent guides
-        -- ============================================================
-
-        hl.IblIndent = { fg = "#232433" }
-        hl.IblScope = { fg = "#3d59a1" }
-
-        -- ============================================================
-        -- Neo-tree
-        -- ============================================================
-
-        hl.NeoTreeNormal = { fg = c.fg, bg = c.bg_dark }
-        hl.NeoTreeNormalNC = { fg = "#a9b1d6", bg = c.bg_dark }
-        hl.NeoTreeDirectoryIcon = { fg = "#7aa2f7" }
-        hl.NeoTreeDirectoryName = { fg = "#a9b1d6" }
-        hl.NeoTreeRootName = { fg = "#7aa2f7", bold = true }
-        hl.NeoTreeFileName = { fg = "#c0caf5" }
-        hl.NeoTreeGitAdded = { fg = "#73daca" }
-        hl.NeoTreeGitModified = { fg = "#e0af68" }
-        hl.NeoTreeGitDeleted = { fg = "#f7768e" }
-        hl.NeoTreeGitConflict = { fg = "#bb9af7", bold = true }
-
-        -- ============================================================
-        -- Status / Tabs
-        -- ============================================================
-
-        hl.StatusLine = { fg = "#a9b1d6", bg = "#16161e" }
-        hl.StatusLineNC = { fg = "#565f89", bg = "#16161e" }
-        hl.TabLine = { fg = "#565f89", bg = "#16161e" }
-        hl.TabLineFill = { bg = "#16161e" }
-        hl.TabLineSel = { fg = "#c0caf5", bg = "#283457", bold = true }
-
-        -- ============================================================
-        -- Telescope
-        -- ============================================================
-
-        hl.TelescopeNormal = { fg = c.fg, bg = "#1a1b26" }
-        hl.TelescopeBorder = { fg = "#3d59a1", bg = "#1a1b26" }
-        hl.TelescopePromptNormal = { fg = c.fg, bg = "#16161e" }
-        hl.TelescopePromptBorder = { fg = "#3d59a1", bg = "#16161e" }
-        hl.TelescopePromptTitle = { fg = "#16161e", bg = "#7aa2f7", bold = true }
-        hl.TelescopePreviewTitle = { fg = "#16161e", bg = "#73daca", bold = true }
-        hl.TelescopeResultsTitle = { fg = "#16161e", bg = "#bb9af7", bold = true }
-        hl.TelescopeSelection = { fg = "#c0caf5", bg = "#283457", bold = true }
-
-        -- ============================================================
-        -- Snacks Picker
-        -- ============================================================
-
-        hl.SnacksPickerNormal = { fg = c.fg, bg = "#1a1b26" }
-        hl.SnacksPickerBorder = { fg = "#3d59a1", bg = "#1a1b26" }
-        hl.SnacksPickerInput = { fg = c.fg, bg = "#16161e" }
-        hl.SnacksPickerInputBorder = { fg = "#3d59a1", bg = "#16161e" }
-        hl.SnacksPickerInputTitle = { fg = "#16161e", bg = "#7aa2f7", bold = true }
-        hl.SnacksPickerPreview = { fg = c.fg, bg = "#1a1b26" }
-        hl.SnacksPickerPreviewBorder = { fg = "#73daca", bg = "#1a1b26" }
-        hl.SnacksPickerList = { fg = c.fg, bg = "#1a1b26" }
-        hl.SnacksPickerListCursorLine = { fg = "#c0caf5", bg = "#283457", bold = true }
-
-        -- ============================================================
-        -- Trouble
-        -- ============================================================
-
-        hl.TroubleNormal = { fg = c.fg, bg = c.bg_dark }
-        hl.TroubleText = { fg = "#a9b1d6" }
-        hl.TroubleCount = { fg = "#bb9af7", bold = true }
-        hl.TroubleIndent = { fg = "#292e42" }
-
-        -- ============================================================
-        -- Noice
-        -- ============================================================
-
-        hl.NoiceCmdline = { fg = c.fg, bg = "#1a1b26" }
-        hl.NoiceCmdlinePopup = { fg = c.fg, bg = "#1a1b26" }
-        hl.NoiceCmdlinePopupBorder = { fg = "#3d59a1", bg = "#1a1b26" }
-        hl.NoiceCmdlineIcon = { fg = "#7aa2f7" }
-        hl.NoicePopup = { fg = c.fg, bg = "#1a1b26" }
-        hl.NoicePopupmenu = { fg = c.fg, bg = "#16161e" }
-
-        -- ============================================================
-        -- Breadcrumbs / Dropbar
-        -- ============================================================
-
-        hl.DropBarIconKindFile = { fg = "#7aa2f7" }
-        hl.DropBarKindFile = { fg = "#c0caf5" }
-        hl.DropBarKindFolder = { fg = "#7dcfff" }
-        hl.DropBarKindFunction = { fg = "#bb9af7" }
-        hl.DropBarKindMethod = { fg = "#bb9af7" }
-
-        -- ============================================================
-        -- Which-key
-        -- ============================================================
-
-        hl.WhichKey = { fg = "#7aa2f7" }
-        hl.WhichKeyGroup = { fg = "#7dcfff" }
-        hl.WhichKeyDesc = { fg = "#a9b1d6" }
-        hl.WhichKeySeparator = { fg = "#3b4261" }
-
-        -- ============================================================
-        -- Notifications
-        -- ============================================================
-
-        hl.NotifyINFOBorder = { fg = "#7aa2f7" }
-        hl.NotifyWARNBorder = { fg = "#e0af68" }
-        hl.NotifyERRORBorder = { fg = "#f7768e" }
-        hl.NotifyDEBUGBorder = { fg = "#565f89" }
-        hl.NotifyTRACEBorder = { fg = "#bb9af7" }
+        hl.NotifyINFOBorder = { fg = blue }
+        hl.NotifyWARNBorder = { fg = c.yellow }
+        hl.NotifyERRORBorder = { fg = c.red }
+        hl.NotifyDEBUGBorder = { fg = muted }
+        hl.NotifyTRACEBorder = { fg = c.magenta }
       end,
     },
   },
