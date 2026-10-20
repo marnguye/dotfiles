@@ -1,140 +1,95 @@
 return {
   {
     "folke/snacks.nvim",
-
     opts = {
       picker = {
         enabled = true,
-
-        prompt = "❯ ",
-
-        matcher = {
-          fuzzy = true,
-          smartcase = true,
-          ignorecase = true,
-          filename_bonus = true,
-          file_pos = true,
-          cwd_bonus = true,
-          frecency = true,
-          history_bonus = true,
-        },
-
-        layout = {
-          preset = "default",
-          cycle = true,
-        },
-
+        ui_select = true,
+        layout = { preset = "default", cycle = true },
+        matcher = { fuzzy = true, smartcase = true, filename_bonus = true, frecency = true },
         win = {
           input = {
-            border = "rounded",
-
             keys = {
               ["<C-j>"] = "list_down",
               ["<C-k>"] = "list_up",
               ["<C-u>"] = "preview_scroll_up",
               ["<C-d>"] = "preview_scroll_down",
-              ["<C-c>"] = "close",
             },
-          },
-
-          list = {
-            border = "rounded",
-          },
-
-          preview = {
-            border = "rounded",
-          },
-        },
-
-        ui_select = true,
-
-        sources = {
-          files = {
-            hidden = false,
-            ignored = false,
-          },
-
-          grep = {
-            hidden = false,
-            ignored = false,
           },
         },
       },
     },
-
     keys = {
       {
         "<leader><space>",
         function()
-          Snacks.picker.smart()
+          Snacks.picker.files()
         end,
-        desc = "Smart Find Files",
+        desc = "Find files",
       },
-
       {
-        "<leader>/",
+        "<leader>ff",
+        function()
+          Snacks.picker.files()
+        end,
+        desc = "Find files",
+      },
+      {
+        "<leader>fg",
         function()
           Snacks.picker.grep()
         end,
-        desc = "Grep",
+        desc = "Live grep",
       },
-
       {
-        "<leader>,",
+        "<leader>fb",
         function()
           Snacks.picker.buffers()
         end,
         desc = "Buffers",
       },
-
       {
         "<leader>fr",
         function()
           Snacks.picker.recent()
         end,
-        desc = "Recent Files",
+        desc = "Recent files",
       },
-
       {
-        "<leader>fg",
+        "<leader>/",
         function()
-          Snacks.picker.git_files()
+          Snacks.picker.grep()
         end,
-        desc = "Git Files",
+        desc = "Live grep",
       },
-
       {
         "<leader>sg",
         function()
           Snacks.picker.grep()
         end,
-        desc = "Grep",
+        desc = "Live grep",
       },
-
       {
         "<leader>sw",
         function()
           Snacks.picker.grep_word()
         end,
-        desc = "Grep Word",
+        desc = "Grep word",
       },
-
       {
         "<leader>ss",
         function()
           Snacks.picker.lsp_symbols()
         end,
-        desc = "LSP Symbols",
+        desc = "Symbols",
       },
-
       {
         "<leader>sS",
         function()
           Snacks.picker.lsp_workspace_symbols()
         end,
-        desc = "LSP Workspace Symbols",
+        desc = "Workspace symbols",
       },
-
       {
         "<leader>sd",
         function()
@@ -142,13 +97,68 @@ return {
         end,
         desc = "Diagnostics",
       },
-
       {
         "<leader>sD",
         function()
           Snacks.picker.diagnostics_buffer()
         end,
-        desc = "Buffer Diagnostics",
+        desc = "Buffer diagnostics",
+      },
+      {
+        "<leader>dd",
+        function()
+          Snacks.picker.diagnostics()
+        end,
+        desc = "Diagnostics",
+      },
+      {
+        "<leader>gs",
+        function()
+          Snacks.picker.git_status()
+        end,
+        desc = "Git status",
+      },
+      {
+        "<leader>gd",
+        function()
+          Snacks.picker.git_diff()
+        end,
+        desc = "Git diff",
+      },
+      {
+        "<leader>gl",
+        function()
+          Snacks.picker.git_log()
+        end,
+        desc = "Git history",
+      },
+      {
+        "<leader>gL",
+        function()
+          Snacks.picker.git_log_file()
+        end,
+        desc = "File history",
+      },
+      {
+        "<leader>gb",
+        function()
+          require("gitsigns").toggle_current_line_blame()
+        end,
+        desc = "Git blame",
+      },
+      {
+        "<leader>gS",
+        function()
+          Snacks.picker.git_stash()
+        end,
+        desc = "Git stash",
+      },
+      {
+        "<leader>tt",
+        function()
+          Snacks.terminal.toggle()
+        end,
+        desc = "Toggle terminal",
       },
     },
   },
